@@ -3,13 +3,10 @@ import axios from "axios";
 
 const API_URL = 'http://localhost:3001/api/users';
 
-function setUsers(data) {
-    users = data;
-}
 
 export default function App() {
     const [users, setUsers] = useState([]);
-
+    const [counter, setCounter] = useState(0);
     useEffect(() => {
         axios
             .get(API_URL)
@@ -23,7 +20,11 @@ export default function App() {
     return (
         <div>
             <h2>Users</h2>
-            <div>Data fetched correctly</div>
+            <ul>
+                {users.map((user, idx) => (
+                    <li id={idx}>{user}</li>
+                ))}
+            </ul>
         </div>
     );
 }
