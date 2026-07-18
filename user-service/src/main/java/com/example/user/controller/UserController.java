@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.user.service.UserService;
+import com.example.user.entity.*;
 
 @RestController
 @RequestMapping("/api")
@@ -17,7 +18,7 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public List<String> getUsers() {
-        return this.userService.getUsers();
+    public List<User> getUsers() {
+        return this.userService.getAll();
     }
 }
