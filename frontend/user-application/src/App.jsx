@@ -22,7 +22,7 @@ export default function App() {
             <h2>Users</h2>
             <ul>
                 {users.map((user, idx) => (
-                    <li id={idx}>{user}</li>
+                    <li id={user.id}>{user.firstName} {user.lastName}</li>
                 ))}
             </ul>
         </div>
