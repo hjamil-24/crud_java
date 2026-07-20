@@ -6,7 +6,6 @@ const API_URL = 'http://localhost:3001/api/users';
 
 export default function App() {
     const [users, setUsers] = useState([]);
-    const [counter, setCounter] = useState(0);
     useEffect(() => {
         axios
             .get(API_URL)
