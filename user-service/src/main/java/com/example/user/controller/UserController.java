@@ -5,7 +5,13 @@ import java.util.List;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.user.service.UserService;
+
+import jakarta.validation.Valid;
+
 import com.example.user.entity.*;
+import com.example.user.dto.*;
+
+import com.example.user.utils.Util;
 
 @RestController
 @RequestMapping("/api")
@@ -20,5 +26,13 @@ public class UserController {
     @GetMapping("/users")
     public List<User> getUsers() {
         return this.userService.getAll();
+    }
+
+    @SuppressWarnings("null")
+    @PostMapping("/users")
+    public Long addUsers(@Valid @RequestBody UserDTO data) {
+
+        User user = Util.convertToEntity(data);
+        return this.userService.addUser(user);
     }
 }
