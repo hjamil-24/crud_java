@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.topbar {
+    background-color: rgb(106, 135, 96);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 15px 20px;
+    color: #fff;
+}
+
+.topbar h2 {
+    grid-column: 2;
+    margin: 0;
+    text-align: center;
+}
+
+.navigations {
+   grid-column: 3;
+   justify-self: right;
+}
+
+.navigations a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 15px 20px;
+}
+
+.navigations a:hover {
+    background-color: rgb(182, 219, 206);
+    color: rgb(99, 150, 133);
+}
+
+.navigations a:active {
+    color: #7c7b56;
+}

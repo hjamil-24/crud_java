@@ -1,7 +1,8 @@
+import '../styles/UserList.css';
+
 export default function UserList({ users }) {
-    console.log("Users: ", users);
     return (
-        <table border="1" cellPadding="5">
+        <table className='user-table'>
             <thead>
                 <tr>
                     <th>First Name</th>

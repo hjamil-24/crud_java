@@ -28,7 +28,13 @@ export default function Home() {
     if (loading) return <h3>Loading...</h3>
     return (
         <div>
-            <h2>Users</h2>
+            <h2 style={{
+                color: "#3b4988",
+                paddingTop: "15px",
+                paddingLeft: "10px"
+            }}>
+                Users
+            </h2>
             <UserList users={users} />
         </div>
     );

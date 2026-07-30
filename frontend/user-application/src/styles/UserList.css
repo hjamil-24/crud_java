@@ -1,0 +1,31 @@
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.user-table th,
+.user-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.user-table th {
+    background-color: rgb(106, 135, 96);
+    color: white;
+    font-weight: bold;
+}
+
+.user-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.user-table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+.user-table td {
+    color: #333;
+}
