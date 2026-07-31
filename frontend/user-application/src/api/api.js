@@ -8,3 +8,7 @@ const api = axios.create({
 });
 
 export default api;
+
+export const deleteUser = (id) => {
+    api.delete(`/users/${id}`);
+}

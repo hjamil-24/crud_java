@@ -35,4 +35,10 @@ public class UserController {
         User user = Util.convertToEntity(data);
         return this.userService.addUser(user);
     }
+
+    @DeleteMapping("/users/{id}")
+    public Long deleteUser(@PathVariable Long id) {
+        this.userService.delete(id);
+        return id;
+    }
 }
