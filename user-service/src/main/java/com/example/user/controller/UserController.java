@@ -2,6 +2,7 @@ package com.example.user.controller;
 
 import java.util.List;
 
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.user.service.UserService;
@@ -37,7 +38,7 @@ public class UserController {
     }
 
     @DeleteMapping("/users/{id}")
-    public Long deleteUser(@PathVariable Long id) {
+    public Long deleteUser(@PathVariable @NonNull Long id) {
         this.userService.delete(id);
         return id;
     }
