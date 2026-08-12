@@ -20,6 +20,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    // not used currently.
     public User save(@NonNull User user) {
         return userRepository.save(user);
     }
@@ -31,5 +32,14 @@ public class UserService {
 
     public void delete(@NonNull Long id) {
         userRepository.deleteById(id);
+    }
+
+    public User updateUser(@NonNull Long id, User user) {
+        User existingUser = userRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("User not found"));
+        existingUser.setFirstName(user.getFirstName());
+        existingUser.setLastName(user.getLastName());
+        existingUser.setAge(user.getAge());
+        return userRepository.save(existingUser);
     }
 }

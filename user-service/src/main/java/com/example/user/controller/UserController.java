@@ -42,4 +42,13 @@ public class UserController {
         this.userService.delete(id);
         return id;
     }
+    @PutMapping("/users/{id}")
+    public Long updateUser(
+        @PathVariable @NonNull Long id,
+        @RequestBody UserDTO data
+    ) {
+        User user = Util.convertToEntity(data);
+        User updatedUser = this.userService.updateUser(id, user);
+        return updatedUser.getId();
+    }
 }
