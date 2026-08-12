@@ -1,12 +1,23 @@
-import { useState } from "react";
-import api from "../api/api";
+import { useEffect, useState } from "react";
+import api, { updateUser } from "../api/api";
 
-export default function UserForm() {
+export default function UserForm({ user }) {
+    const isEdit = !!user;
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
         age: ""
     });
+
+    useEffect(() => {
+        if (user) {
+            setFormData({
+                firstName: user.firstName || "",
+                lastName: user.lastName || "",
+                age: user.age || ""
+            });
+        }
+    }, [user]);
 
     const [response, setResponse] = useState(null);
 
@@ -18,11 +29,15 @@ export default function UserForm() {
     };
 
     const handleSubmit = async (e) => {
+        let res;
         e.preventDefault();
 
         try {
-            const res = api.post("/users", formData);
-
+            if (user) {
+                res = await updateUser(user.id, formData);
+            } else {
+                res = api.post("/users", formData);
+            }
             setResponse(res);
             console.log(res.data);
         } catch (error) {
@@ -66,7 +81,7 @@ export default function UserForm() {
                     />
                 </div>
 
-                <button type="submit">Add User</button>
+                <button type="submit">{isEdit ? 'Update User' : 'Add User'}</button>
             </form>
 
             { response && (

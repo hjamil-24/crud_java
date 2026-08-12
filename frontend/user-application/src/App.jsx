@@ -27,6 +27,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/user-add" element={<FormPage />} />
+                <Route path="/user-edit/:id" element={<FormPage />} />
             </Routes>
         </>
     );

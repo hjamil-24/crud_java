@@ -12,3 +12,7 @@ export default api;
 export const deleteUser = (id) => {
     api.delete(`/users/${id}`);
 }
+
+export const updateUser = (id, formData) => {
+    return api.put(`/users/${id}`, formData);
+}
