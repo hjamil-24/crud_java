@@ -16,3 +16,7 @@ export const deleteUser = (id) => {
 export const updateUser = (id, formData) => {
     return api.put(`/users/${id}`, formData);
 }
+
+export const getUser = (id) => {
+    return api.get(`/users/${id}`);
+}

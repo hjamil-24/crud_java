@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import {
     deleteUser
@@ -9,6 +10,8 @@ import UserForm from './UserForm';
 export default function UserList({ users }) {
     const [selectedUser, setSelectedUser] = useState(null);
     const [showForm, setShowForm] = useState(false);
+
+    const navigate = useNavigate();
 
     const handleDelete = async (id) => {
         if (!window.confirm("Are you sure you want to delelte this user?")) {
@@ -23,8 +26,7 @@ export default function UserList({ users }) {
     };
 
     const handleEdit = (user) => {
-        setSelectedUser(user);
-        setShowForm(true);
+        navigate(`/user-edit/${user.id}`)
     }
 
 
@@ -59,12 +61,12 @@ export default function UserList({ users }) {
                     ))}
                 </tbody>
             </table>
-            {/* User Form */}
+            {/* User Form
             { showForm && (
                 <UserForm
                     user = {selectedUser}
                 />
-            )}
+            )} */}
         </>
     );
 }

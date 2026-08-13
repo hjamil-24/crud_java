@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
-import api, { updateUser } from "../api/api";
+import { useNavigate, useParams } from "react-router-dom";
+import api, { updateUser, getUser } from "../api/api";
 
-export default function UserForm({ user }) {
-    const isEdit = !!user;
+export default function UserForm() {
+    const { id } = useParams();
+    const navigate = useNavigate();
+
+    const isEdit = !!id;
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -10,14 +14,23 @@ export default function UserForm({ user }) {
     });
 
     useEffect(() => {
-        if (user) {
-            setFormData({
-                firstName: user.firstName || "",
-                lastName: user.lastName || "",
-                age: user.age || ""
-            });
+        if (isEdit) {
+            loadUser();
         }
-    }, [user]);
+    }, [id]);
+
+    const loadUser = async () => {
+        try {
+            const response = await getUser(id);
+            setFormData({
+                firstName: response.data.firstName,
+                lastName: response.data.lastName,
+                age: response.data.age
+            });
+        } catch (err) {
+            console.error(err);
+        }
+    }
 
     const [response, setResponse] = useState(null);
 
@@ -33,8 +46,8 @@ export default function UserForm({ user }) {
         e.preventDefault();
 
         try {
-            if (user) {
-                res = await updateUser(user.id, formData);
+            if (isEdit) {
+                res = await updateUser(id, formData);
             } else {
                 res = api.post("/users", formData);
             }
@@ -43,6 +56,8 @@ export default function UserForm({ user }) {
         } catch (error) {
             console.error("API Error: ", error);
         }
+
+        navigate('/');
     };
 
     return (

@@ -1,6 +1,7 @@
 package com.example.user.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,10 @@ public class UserService {
 
     public List<User> getAll() {
         return userRepository.findAll();
+    }
+
+    public Optional<User> getOneUser(@NonNull Long id) {
+        return userRepository.findById(id);
     }
 
     // not used currently.

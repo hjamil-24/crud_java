@@ -1,6 +1,7 @@
 package com.example.user.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,11 @@ public class UserController {
         return this.userService.getAll();
     }
 
+    @GetMapping("/users/{id}")
+    public Optional<User> getUser(@PathVariable @NonNull Long id) {
+        return this.userService.getOneUser(id);
+    }
+
     @SuppressWarnings("null")
     @PostMapping("/users")
     public Long addUsers(@Valid @RequestBody UserDTO data) {
@@ -42,6 +48,7 @@ public class UserController {
         this.userService.delete(id);
         return id;
     }
+
     @PutMapping("/users/{id}")
     public Long updateUser(
         @PathVariable @NonNull Long id,
