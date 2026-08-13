@@ -8,7 +8,7 @@ In this branch, the focus is on a generic `user information` page that can
 run CRUD APIs.
 
 ## Future
-- [ ] Navigation for update using `useParams` and `navigate`
+- [x] Navigation for update using `useParams` and `navigate` (done in adf4951)
 ```
 src/
 │
