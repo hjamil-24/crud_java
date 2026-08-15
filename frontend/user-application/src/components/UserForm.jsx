@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import api, { updateUser, getUser } from "../api/api";
+import '../styles/form.css';
 
 export default function UserForm() {
     const { id } = useParams();
@@ -62,9 +63,10 @@ export default function UserForm() {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>First Name</label>
+            <form className="form" onSubmit={handleSubmit}>
+                <h2>{isEdit ? 'Update User': 'Add User'}</h2>
+                <div className="form-group">
+                    <label htmlFor="name">First Name</label>
                     <br />
                     <input
                         type="text"
@@ -74,8 +76,8 @@ export default function UserForm() {
                     />
                 </div>
                 <br />
-                <div>
-                    <label>Last Name</label>
+                <div className="form-group">
+                    <label htmlFor="name">Last Name</label>
                     <br />
                     <input
                         type="text"
@@ -85,8 +87,8 @@ export default function UserForm() {
                     />
                 </div>
                 <br />
-                <div>
-                    <label>Age</label>
+                <div className="form-group">
+                    <label htmlFor="age">Age</label>
                     <br />
                     <input
                         type="number"
